@@ -1,8 +1,8 @@
+print("Введите число")
+k = int(input())
 answer = 0
 
-for k in range(1,21):
-    s = 24 + 20 * k
-    print("Расстояние = " + str(s), "Количество грядок = " + str(k))
-    answer += s
-
-print("Итоговое расстояние = " + str(answer))
+for i in range(k):
+    answer += 44 + 20 * i
+    
+print("Если грядок " + str(k) + ", то расстояние = " + str(answer))
