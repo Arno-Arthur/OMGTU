@@ -13,6 +13,6 @@ for i in range(0,count):
     milk = (price1 * s2 - price2 * s1) / (v1 * s2 - v2 * s1) #цена молока
     result.append(round(milk,2)) #массив из цен на молоко
 
-factory = result.index(min(result)) + 1 #Номер фирмы
-min_price = format(min(result), '.2f') #Минимальная цена на молоко + добавление числовых разрядов после запятой
+factory = result.index(min(result)) + 1 #номер фирмы
+min_price = format(min(result), '.2f') #минимальная цена на молоко + добавление числовых разрядов после запятой
 print(factory,min_price) #итог
