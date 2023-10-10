@@ -1,0 +1,31 @@
+internal class Program
+{
+    public static void Main()
+    {
+        int count = 0;
+        int N = Convert.ToInt32(Console.ReadLine());
+        int[] min = new int [N];
+
+        for (int i = 0; i < N; i++) {
+            int x = Convert.ToInt32(Console.ReadLine());
+            if (x == 0) { count++; min[i] = (count); }
+            else { count = 0; }
+        }
+
+        Array.Sort(min); /*сортировка (можно не использовать)*/
+
+        static bool isNotNull(int n) /*функция - удаление "0" из массива*/
+        { return n != 0; }
+
+        min = Array.FindAll(min, isNotNull).ToArray();  /*удаление "0" из массива*/
+        min = min.Distinct().ToArray(); /*удаление повторяющихся значений (можно не использовать)*/
+        Console.WriteLine("[{0}]", string.Join(", ", min)); /*вывод массива*/
+
+        int minValue = min[0];
+        for (int i = 0; i < min.Length; i++) {
+            if (min[i] < minValue) { minValue = min[i];}
+        }
+
+        Console.WriteLine(minValue); /*ответ*/
+    }
+}
