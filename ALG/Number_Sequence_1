@@ -1,0 +1,15 @@
+/*все ли элементы последовательности положительные четные числа, оканчивающиеся на 6*/
+using System;
+class HelloWorld {
+  static void Main() {
+    bool flag = false;
+    int N = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < N; i ++){
+        int number = Convert.ToInt32(Console.ReadLine());
+        if (number <= 0 & number % 2 != 0 & number % 10 != 6){
+            flag = true;}
+    }
+    if (flag){ Console.WriteLine("No");}
+    else{Console.WriteLine("Yes");}
+  }
+}
