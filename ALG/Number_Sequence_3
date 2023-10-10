@@ -6,12 +6,10 @@ internal class Program
         int N = Convert.ToInt32(Console.ReadLine());
         int[] min = new int [N];
 
-        for (int i = 0; i < N; i++)
-        {
+        for (int i = 0; i < N; i++) {
             int x = Convert.ToInt32(Console.ReadLine());
             if (x > 0) { count++; min[i] = (count); }
             else { count = 0; }
-          
         }
 
         Array.Sort(min); /*сортировка (можно не использовать)*/
@@ -27,6 +25,7 @@ internal class Program
         for (int i = 0; i < min.Length; i++) {
             if (min[i] > maxValue) { maxValue = min[i];}
         }
+
         Console.WriteLine(maxValue); /*ответ*/
     }
 }
