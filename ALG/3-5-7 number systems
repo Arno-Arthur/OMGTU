@@ -12,11 +12,8 @@ internal class Program
             int s3 = N % 3; int s5 = N % 5; int s7 = N % 7;
 
             Console.WriteLine("Последняя цифра числа " + N + ":" + '\n' + "В 3-ой системе = " + s3 + '\n' + "В 5-ой системе = " + s5 + '\n' + "В 7-ой системе = " + s7);
-            if (s3 == s5 && s5 == s7) {
-                result++;
-            }
+            if (s3 == s5 && s5 == s7) {result++;}
         }
         Console.WriteLine("Количество элементов: " + result);
-
     }
 }
