@@ -1,4 +1,5 @@
 /*Максимальный размер возрастающей подпоследовательности*/
+using System;
 internal class Program
 {
     public static void Main()
