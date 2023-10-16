@@ -1,3 +1,4 @@
+/*Минимальный размер подпоследовательности из 0 */
 internal class Program
 {
     public static void Main()
