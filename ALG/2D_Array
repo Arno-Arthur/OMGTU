@@ -1,0 +1,64 @@
+using System;
+internal class Program
+{
+    public static void Print2DArray<T>(T[,] matrix)
+    {
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++){Console.Write(matrix[i, j] + "\t");}
+            Console.WriteLine();
+        }
+    }
+
+    public static void Main()
+    {
+        int N = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Количество элементов в 2-мерном массиве = " + N*N);
+        int positive_counter = 0;
+        int[] array_1 = new int[N * N];
+        int[,] array_2 = new int[N, N];
+
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                int number = Convert.ToInt32(Console.ReadLine());
+                array_2[i, j] = number;
+                if (number > 0) { positive_counter++; }
+            }
+        }
+        Console.WriteLine();
+        Print2DArray(array_2);
+        
+        for (int a = 0, id = 0; a < N; a++)
+        {
+            for(int b = 0; b < N; b++, id++)
+            {
+                array_1[id] = array_2[b, a];
+            }
+        }
+        Console.WriteLine();
+        Console.WriteLine("Полученный 1-мерный массив: " + "[{0}]", string.Join(", ", array_1));
+        Console.WriteLine("Количество + элементов в массиве: " + positive_counter);
+
+        for (int c = 0; c < N; c++)
+        {
+            int negative_counter = 0;
+            for (int d = 0; d < N; d++)
+            {
+                if (array_2[c, d] < 0) { negative_counter++; }
+            }
+            Console.WriteLine("Строка " + (c+1) + " cодержит " + negative_counter + " отрицательных элементов");
+        }
+
+        for (int m = 0; m < N; m++)
+        {
+            int min = array_2[0,m];
+            for (int l = 1; l < N; l++)
+            {
+                if (array_2[l,m] < min) { min = array_2[l,m]; }
+            }
+            Console.WriteLine("Минимальный элемент " + (m + 1) + " столбца равен " + min);
+        }
+    }
+}
