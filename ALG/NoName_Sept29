@@ -1,0 +1,25 @@
+internal class Program
+{
+    public static void Main()
+    {
+        Console.Write("Введите кол-во пар: ");
+        int N = Convert.ToInt32(Console.ReadLine());
+        int maxSum = 0;
+        int difference = 500;
+        for (int i = 0; i < N; i++)
+        {
+            Console.Write("Число 1: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Число 2: ");
+            int b = Convert.ToInt32(Console.ReadLine());
+
+            if (a > b) { maxSum += a; }
+            else { maxSum += b; }
+
+            int module = Math.Abs(a - b);
+            if (module < difference && module != 0) { difference = module; }
+            if (maxSum % 3 == 0) { Console.WriteLine(maxSum); }
+            else { Console.WriteLine(maxSum - difference); }
+        }
+    }
+}
