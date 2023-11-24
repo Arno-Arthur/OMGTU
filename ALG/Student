@@ -1,0 +1,53 @@
+using System;
+
+namespace Project {
+ 
+  class Student {
+    
+    public string fio { get; set; }
+    public int year { get; set; }
+    public string group { get; set; }
+    
+    public Student ()
+        {
+            fio = fio;
+            year = year;
+            group = group;
+        }
+        
+    public override string ToString()
+        {
+            return ($"Имя: {fio}  Возраст: {year} Группа: {group}");
+        }
+
+  }
+
+  class Program {
+    static void Main() {
+        
+        Console.Write("Кол-во студентов: ");
+        int n = int.Parse(Console.ReadLine());
+        Student[] newStudent = new Student[n];
+        Console.WriteLine("Введите данные");
+        
+        for(int i = 0;i < n; i++)
+            {
+            newStudent[i] = new Student();
+            Console.Write("ФИО: ");
+            newStudent[i].fio = Console.ReadLine();
+            Console.Write("Год: ");
+            newStudent[i].year = int.Parse(Console.ReadLine());
+            Console.Write("Группа: ");
+            newStudent[i].group = Console.ReadLine();
+            Console.WriteLine();
+            }
+            
+        for(int i = 0; i < n; i++)
+        {
+            Console.WriteLine("Студент " + (i+1));
+            Console.WriteLine(newStudent[i].ToString());
+            Console.WriteLine();
+        }
+      }
+    }
+  }
