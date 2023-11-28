@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication
 {
     class Car
     {
@@ -12,7 +9,6 @@ namespace ConsoleApplication1
         public string color;
         public int[] date;
         public string[] person;
-        
 
         public Car(string name, int year, string color, int[] date, string[] person)
         {
@@ -27,14 +23,34 @@ namespace ConsoleApplication1
         {
             Console.WriteLine("Наименование: " + name);
             Console.WriteLine("Год выпуска: " + year);
+
             Console.Write("Годы тех осмотра: ");
             foreach (int year in date) Console.Write(year + " ");
             Console.WriteLine();
+
             Console.Write("Владельцы: ");
             foreach (string fio in person) Console.Write(fio + " ");
             Console.WriteLine();
+
             Console.WriteLine("Цвет: " + color);
-            Console.WriteLine();
+        }
+
+        public void NameSearch(string name)
+        {
+            if (this.name == name)
+                Data();
+        }
+
+        public void YearSearch(int year)
+        {
+            if (this.year == year)
+                Data();
+        }
+
+        public void DateSearch(int year)
+        {
+            if (date.Contains(year)) Console.WriteLine("Прошёл осмотр");
+            else Console.WriteLine("Не прошёл осмотр");
         }
     }
 
@@ -42,46 +58,37 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            int[] year1 = {2003, 2009, 2013, 2017, 2021};
-            string[] person1 = {"Рау", "Пэй", "Рой", "Рысь"};
+            int[] year1 = { 2003, 2009, 2013, 2017, 2021 };
+            string[] person1 = { "Рау", "Пэй", "Рой", "Рысь" };
             Car car1 = new Car("Ford", 2000, "red", year1, person1);
 
-            int[] year2 = {2022};
-            string[] person2 = {"Фральцов"};
+            int[] year2 = { 2022 };
+            string[] person2 = { "Фральцов" };
             Car car2 = new Car("AUDI", 2020, "blue", year2, person2);
-            
-            Car[] cars = {car1, car2};
+
+            Car[] cars = { car1, car2 };
 
             Console.Write("Наименование: ");
             string name = Console.ReadLine();
-            
-            foreach(Car car in cars)
-            {
-                if (car.name == name){
-                    Console.WriteLine("---------");
-                    car.Data();}
-            }
+            Console.WriteLine("------------------");
+
+            foreach (Car car in cars) { car.NameSearch(name); }
             Console.WriteLine();
-            
+
             Console.Write("Год выпуска: ");
             int year = int.Parse(Console.ReadLine());
-            foreach (Car car in cars)
-            {
-                if (car.year == year)
-                {
-                    Console.WriteLine("---------");
-                    car.Data();
-                }
-                    
-            }
+            Console.WriteLine("------------------");
+            foreach (Car car in cars) { car.YearSearch(year); }
             Console.WriteLine();
+
             Console.Write("Год осмотра: ");
             int data = int.Parse(Console.ReadLine());
+            Console.WriteLine("------------------");
             for (int i = 0; i < cars.Length; i++)
             {
-                if (cars[i].date.Contains(data)) Console.WriteLine("Car{0}: Осмотр пройден", i + 1);
-                else Console.WriteLine("Car{0}: Осмотр не пройден", i + 1);
+                Console.Write("Car {0}: ", i + 1);
+                cars[i].DateSearch(data);
             }
         }
-    }
+    }    
 }
