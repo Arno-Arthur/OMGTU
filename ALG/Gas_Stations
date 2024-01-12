@@ -1,0 +1,36 @@
+ int zp = 0;
+ int k = Convert.ToInt32(Console.ReadLine());
+ int p = Convert.ToInt32(Console.ReadLine());
+ int[] a = new int[k];
+ int[] da = new int[k];
+ int sa = 0;
+ for (int i = 0; i < k; i++)
+ {
+     if (i == 0) a[i] = 0;
+     else a[i] = Convert.ToInt32(Console.ReadLine());
+     sa = sa + a[i];
+     da[i] = sa;
+ }
+ for (int i = 0; i < k - 1; i++)
+ {
+     int x = 0;
+     int sx = 0;
+     int sxm = 0;
+     int check = 0;
+     for (int j = 0; j < sa; j++)
+     {
+         if (j <= da[i] + a[i + 1] - p && j >= da[i] + p)
+         {
+             for (int g = 0; g < k; g++)
+             {
+                 x = Math.Abs(j - da[g]);
+                 sx = sx + x;
+             }
+             check++;
+             if (check == 1) { sxm = sx; zp = j; } else { sxm = Math.Min(sx, sxm); if (sxm == sx) zp = j; }
+         }
+         x = 0;
+         sx = 0;
+     }
+ }
+ Console.WriteLine(zp);
