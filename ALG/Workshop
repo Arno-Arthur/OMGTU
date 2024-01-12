@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication14
+{
+    class Program
+    {
+        public static float GetValue(WorkShop ex, string name)
+        {
+            if (name == ex.name) return ex.value;
+            else return 0;
+        }
+        public static float GetIntense(WorkShop ex, string name, int year)
+        {
+            if (name == ex.name && ex.year == year) return ex.value / 365; else return 0;
+        }
+        static void Main(string[] args)
+        {
+            WorkShop a = new WorkShop("WorkShop1", 2005, 100);
+            WorkShop b = new WorkShop("WorkShop1", 2006, 50);
+            WorkShop c = new WorkShop("WorkShop1", 2007, 200);
+            WorkShop d = new WorkShop("WorkShop2", 2000, 125);
+            WorkShop e = new WorkShop("WorkShop2", 2005, 125);
+            WorkShop f = new WorkShop("WorkShop3", 2020, 300);
+            WorkShop g = new WorkShop("WorkShop3", 2021, 302);
+            WorkShop h = new WorkShop("WorkShop4", 2023, 1);
+            WorkShop[] mas = { a, b, c, d, e, f, g, h };
+            List<int> masg = new List<int>();
+            List<string> masn = new List<string>();
+            foreach(WorkShop x in mas) if (!masg.Contains(x.year)) masg.Add(x.year);
+            foreach (WorkShop x in mas) if (!masn.Contains(x.name)) masn.Add(x.name);
+            masg.Sort();
+            masn.Sort();
+            Console.Write("        ");
+            foreach(int x in masg) Console.Write(x + "    ");
+            Console.WriteLine("Итог");
+            float itog = 0;
+            bool flag = false;
+            foreach (string x in masn)
+            {
+                Console.Write(x + "    ");
+                foreach (int y in masg)
+                {
+                    foreach (WorkShop z in mas) if (z.name == x && z.year == y)
+                            {
+                                Console.Write("{0, 4}    ", Math.Round(GetIntense(z, x, y), 2));
+                                flag = true;
+                            itog += GetValue(z, x);
+                            }
+                    if (!flag) Console.Write("{0, 4}    ", 0);
+                    flag = false;
+                }
+                Console.WriteLine(itog);
+                itog = 0;
+            }
+        }
+    }
+    class WorkShop
+    {
+        public string name;
+        public int year;
+        public float value;
+
+        public WorkShop(string name, int year, float value)
+        {
+            this.name = name;
+            this.year = year;
+            this.value = value;
+        }
+    }
+    
+}
