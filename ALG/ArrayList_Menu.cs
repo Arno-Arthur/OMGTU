@@ -13,9 +13,17 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             bool flag = true;
+            int size;
+            int choice;
 
-            Console.Write("Меню ArrayList" + "\n" + "Введите размерность листа: ");
-            int size = int.Parse(Console.ReadLine());
+            Console.Write("Меню ArrayList" + "\n");
+            do
+            {
+                Console.Write("Введите размерность массива: ");
+                if (int.TryParse(Console.ReadLine(), out size) && size >= 1) break;
+                else Console.WriteLine("Введите целое число, большее или равное 1");
+            }
+            while (true);
 
             ArrayList arrayList = new ArrayList();
             Console.WriteLine("\n" + "Введите объекты листа");
@@ -29,18 +37,26 @@ namespace ConsoleApplication1
             }
 
             Console.WriteLine("\n" + "Ваш лист: ");
-            PrintArrayList(arrayList); 
+            PrintArrayList(arrayList);
 
             while (flag)
             {
                 Console.WriteLine("Выберите метод:" + "\n" + "1 - Count" + "\n" + "2 - BinSearch" + "\n" + "3 - Copy" +
                 "\n" + "4 - IndexOf" + "\n" + "5 - Insert" + "\n" + "6 - Reverse" +
                 "\n" + "7 - Sort" + "\n" + "8 - Add" + "\n" + "9 - Exit");
-                Console.Write("\n" + "Ваш метод: ");
-                int choice = int.Parse(Console.ReadLine());
+
+                do
+                {
+                    Console.Write("\n" + "Ваш метод: ");
+                    if (int.TryParse(Console.ReadLine(), out choice) && choice >= 1 && choice <= 9) break;
+                    else Console.WriteLine("Введите целое число от 1 до 9");
+                }
+
+                while (true);
 
                 switch (choice)
                 {
+
                     case 1:
                         Console.WriteLine("Количество элементов: " + arrayList.Count + "\n");
 
@@ -117,12 +133,12 @@ namespace ConsoleApplication1
                 }
             }
 
-        } 
-            
+        }
+
 
         static void PrintArrayList(ArrayList arrayList)
         {
-            foreach(var item in arrayList) { Console.WriteLine(item); }
+            foreach (var item in arrayList) { Console.WriteLine(item); }
             Console.WriteLine();
         }
     }
