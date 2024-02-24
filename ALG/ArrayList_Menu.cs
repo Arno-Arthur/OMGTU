@@ -19,7 +19,7 @@ namespace ConsoleApplication1
             Console.Write("Меню ArrayList" + "\n");
             do
             {
-                Console.Write("Введите размерность массива: ");
+                Console.Write("Введите размерность листа: ");
                 if (int.TryParse(Console.ReadLine(), out size) && size >= 1) break;
                 else Console.WriteLine("Введите целое число, большее или равное 1");
             }
