@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace ConsoleApplication1
 {
@@ -15,7 +15,6 @@ namespace ConsoleApplication1
             bool flag = true;
             int size;
             int choice;
-
 
             Console.Write("Меню SortedList" + "\n");
             do
@@ -29,7 +28,7 @@ namespace ConsoleApplication1
             SortedList mySL = new SortedList();
             Console.WriteLine("\n" + "Введите ключи-значения листа: ");
 
-            for(int i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 do
                 {
@@ -51,7 +50,6 @@ namespace ConsoleApplication1
             Console.WriteLine("\n" + "Ваш SortedList: ");
             DisplaySortedList(mySL);
 
-
             while (flag)
             {
                 Console.WriteLine("\n" + "Выберите метод:" + "\n" + "1 - Add" + "\n" + "2 - IndexOfKey" + "\n" + "3 - IndexOfValue" +
@@ -64,7 +62,7 @@ namespace ConsoleApplication1
                     else Console.WriteLine("Введите целое число от 1 до 6");
                 }
                 while (true);
-                
+
 
                 switch (choice)
                 {
@@ -78,10 +76,10 @@ namespace ConsoleApplication1
                             Console.Write("Введите значение: ");
                             string user_value = Console.ReadLine();
 
-                            if (!mySL.ContainsKey(user_key)) 
+                            if (!mySL.ContainsKey(user_key))
                             {
                                 mySL.Add(user_key, user_value);
-                                break; 
+                                break;
                             }
                             else Console.WriteLine("Этот ключ уже существует, введите новый" + "\n");
                         }
@@ -117,6 +115,7 @@ namespace ConsoleApplication1
 
 
                     case 4:
+                        
                         Console.Write("Введите ключ: ");
                         string search_key = Console.ReadLine();
 
@@ -126,10 +125,20 @@ namespace ConsoleApplication1
 
 
                     case 5:
+                        
                         Console.Write("Введите значение: ");
                         string search_value = Console.ReadLine();
 
-                        if (mySL.ContainsValue(search_value)) Console.WriteLine($"Ключ по значению: {mySL[search_value]}");
+                        if (mySL.ContainsValue(search_value))
+                        {
+                            foreach (DictionaryEntry entry in mySL)
+                            {
+                                if (entry.Value.Equals(search_value))
+                                {
+                                    Console.WriteLine("Ключ по значению: " + entry.Key); break;
+                                }
+                            }
+                        }
                         else Console.WriteLine("Такого значения нет");
                         break;
 
@@ -141,7 +150,6 @@ namespace ConsoleApplication1
                         break;
                 }
             }
-
         }
 
 
