@@ -43,7 +43,7 @@ class Program
 
     static void Main()
     {
-        List<string> rpnExpression = new List<string> { "-A", "0", "+", "2", "*" };
+        List<string> rpnExpression = new List<string> { "A", "B", "+", "3", "*" };
         double result = EvaluateRPN(rpnExpression);
         Console.WriteLine(result);
     }
