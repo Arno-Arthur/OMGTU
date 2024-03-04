@@ -25,7 +25,7 @@ class Program
 
         }
 
-        Console.WriteLine("Месячный отчёт по общей сумме разговора каждой даты:");
+        Console.WriteLine("Месячный отчёт по общей сумме разговора каждого номера телефона:");
         foreach (DictionaryEntry entry in callMinutes)
         {
             Console.WriteLine("Номер телефона: {0}, Общее количество минут: {1}", entry.Key, entry.Value);
