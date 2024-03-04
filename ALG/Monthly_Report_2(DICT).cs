@@ -29,7 +29,5 @@ class Program
         {
             Console.WriteLine("Дата: {0}, Общее количество минут: {1}", item.Key, item.Value);
         }
-
-        Console.ReadKey();
     }
 }
