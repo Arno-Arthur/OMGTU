@@ -24,7 +24,7 @@ class Program
             else totalMinutes.Add(date, minutes);
         }
 
-        Console.WriteLine("Месячный отчёт по общей сумме разговора каждого номера телефона:");
+        Console.WriteLine("Месячный отчёт по общей сумме разговора каждой даты:");
         foreach (var item in totalMinutes)
         {
             Console.WriteLine("Дата: {0}, Общее количество минут: {1}", item.Key, item.Value);
