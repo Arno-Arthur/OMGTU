@@ -9,9 +9,9 @@ class Program
 
         dataQueue.Enqueue(new CallData("123456789", "2022-01-01", "09:00", 30));
         dataQueue.Enqueue(new CallData("987654321", "2022-01-02", "12:00", 45));
-        dataQueue.Enqueue(new CallData("123456739", "2022-01-01", "14:00", 10));
-        dataQueue.Enqueue(new CallData("123456769", "2022-01-03", "14:00", 15));
-        dataQueue.Enqueue(new CallData("123456779", "2022-01-02", "14:00", 20));
+        dataQueue.Enqueue(new CallData("123456789", "2022-01-01", "14:00", 10));
+        dataQueue.Enqueue(new CallData("123456789", "2022-01-03", "14:00", 15));
+        dataQueue.Enqueue(new CallData("987654321", "2022-01-02", "14:00", 20));
         
 
         Hashtable callMinutes = new Hashtable();
