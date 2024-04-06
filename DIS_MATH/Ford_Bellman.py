@@ -22,7 +22,7 @@ def ford_bellman(graph, start):
                     
     return dist, prev
 
-def reconstruct_path(prev, start, end):
+def build_path(prev, start, end):
     path = []
     current = end
     while current != -1:
@@ -43,7 +43,7 @@ distances, predecessors = ford_bellman(graph, start)
 
 for i, d in enumerate(distances):
     if d != INF:
-        path = reconstruct_path(predecessors, start, i)
+        path = build_path(predecessors, start, i)
         print(f'Кратчайший путь от вершины {start} до вершины {i}: {" -> ".join(map(str, path))}, расстояние = {d}')
     else:
         print(f'От вершины {start} до вершины {i} нет пути')
