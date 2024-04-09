@@ -1,4 +1,5 @@
 from random import random, randint
+
 size = 20
 numbers = [0] * size
 
