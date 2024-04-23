@@ -1,11 +1,10 @@
 class Graph:
-
     def __init__(self, graph):
         self.graph = graph
-        self.ROW = len(graph)
+        self.V = len(graph)
 
-    def BFS(self, s, t, parent):
-        visited = [False] * (self.ROW)
+    def bfs(self, s, t, parent):
+        visited = [False] * self.V
         queue = []
         queue.append(s)
         visited[s] = True
@@ -17,15 +16,14 @@ class Graph:
                     queue.append(ind)
                     visited[ind] = True
                     parent[ind] = u
-                    if ind == t:
-                        return True
-        return False
 
-    def FordFulkerson(self, source, sink):
-        parent = [-1] * (self.ROW)
+        return True if visited[t] else False
+
+    def ford_fulkerson(self, source, sink):
+        parent = [-1] * self.V
         max_flow = 0
 
-        while self.BFS(source, sink, parent):
+        while self.bfs(source, sink, parent):
             path_flow = float("Inf")
             s = sink
             while (s != source):
@@ -34,7 +32,6 @@ class Graph:
 
             max_flow += path_flow
             v = sink
-
             while (v != source):
                 u = parent[v]
                 self.graph[u][v] -= path_flow
@@ -44,16 +41,20 @@ class Graph:
         return max_flow
 
 
-graph = [[0, 16, 13, 0, 0, 0],
-         [0, 0, 10, 12, 0, 0],
-         [0, 4, 0, 0, 14, 0],
-         [0, 0, 9, 0, 0, 20],
-         [0, 0, 0, 7, 0, 4],
-         [0, 0, 0, 0, 0, 0]]
+def read_graph_from_file(filename):
+    with open(filename, "r") as f:
+        lines = f.readlines()
+        N = int(lines[0])
+        graph = [[0] * N for _ in range(N)]
 
-g = Graph(graph)
-source = 1
-sink = 6
+        for line in lines[1:-1]:
+            u, v, c = map(int, line.split())
+            graph[u][v] = c
+        source, sink = map(int, lines[-1].split())
+
+    return graph, source, sink
+
+
 
 while True:
     print(
@@ -73,7 +74,13 @@ while True:
             "\nНеобходимо определить максимальный поток, который можно перевезти в этой сети между двумя городами"
         )
     elif choice == '2':
-        print("Максимальный поток: %d " % g.FordFulkerson(source-1, sink-1))
+        graph, source, sink = read_graph_from_file("input.txt")
+        g = Graph(graph)
+        max_flow = g.ford_fulkerson(source, sink)
+        print(f"\nИсток: {source}"
+              f"\nСток: {sink}"
+              f"\nМаксимальный поток (алгоритм Форда-Фалкерсона):{max_flow}"
+              )
     elif choice == '3':
         print("\nФИО: Репин Артур Александрович"
               "\nГруппа: ФИТ-231")
