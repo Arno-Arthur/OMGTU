@@ -1,5 +1,5 @@
 class Program
-    {
+{
         static void Main()
         {
             string inputFilePath1 = "C:\\Users\\User\\Desktop\\txt\\ConsoleApplication2\\ConsoleApplication2\\1.txt"; //1-3-5-7-9
@@ -44,7 +44,7 @@ class Program
                     line2 = reader2.ReadLine();
                 }
             }
-
+            
             Console.WriteLine("Файлы успешно объединены и отсортированы в файле 3.txt"); //1-2-3-4-5-6-7-8-9-10
         }
-    }
+}
