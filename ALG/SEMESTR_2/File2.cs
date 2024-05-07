@@ -7,6 +7,7 @@
 // 
 // a
 // Результат: 'a'
+
 class Program
 {
     static void Main()
